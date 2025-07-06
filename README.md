@@ -4,7 +4,7 @@
 
 ## 🚀 Быстрый старт
 
-### Запуск через Docker (рекомендуется)
+### Запуск через Docker
 
 1. Создайте файл `.env` в корне проекта:
 ```env
@@ -39,29 +39,15 @@ python bot_worker/main.py
 
 ## 📋 Функциональность
 
-### Веб-интерфейс
-- Современный дизайн с градиентами и анимациями
-- Форма создания заказов
-- Индикатор загрузки
-- Проверка статуса сервисов
-- Адаптивный дизайн
-
 ### Telegram-бот
 - Команда `/start` - приветствие
 - Команда `/id` - получение chat_id
-- Автоматические уведомления о заказах
-- Обработка ошибок и логирование
+- Уведомления о заказах
 
 ### API
 - `GET /` - веб-интерфейс
 - `GET /health` - проверка здоровья сервиса
 - `POST /order?name=...` - создание заказа
-
-## 🧪 Тестирование
-
-```bash
-pytest
-```
 
 ## 🐳 Docker
 
@@ -73,16 +59,39 @@ pytest
 
 ```
 notificate/
-├── app/
-│   ├── api/          # FastAPI роуты
-│   ├── broker/       # RabbitMQ брокер
-│   ├── static/       # HTML/CSS/JS файлы
-│   ├── config.py     # Конфигурация
-│   └── main.py       # Точка входа FastAPI
-├── bot_worker/       # Telegram-бот
-├── tests/           # Тесты
+├── .git/
+├── .pytest_cache/
+├── .mypy_cache/
+├── .venv/
+├── src/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   ├── config.py
+│   │   ├── static/
+│   │   │   └── index.html
+│   │   ├── api/
+│   │   │   ├── __init__.py
+│   │   │   └── order.py
+│   │   └── __pycache__/
+│   ├── broker/
+│   │   ├── __init__.py
+│   │   ├── rabbit.py
+│   │   └── __pycache__/
+│   └── bot_worker/
+│       ├── __init__.py
+│       ├── main.py
+│       ├── config.py
+│       ├── Dockerfile
+│       └── __pycache__/
+├── pyproject.toml
+├── uv.lock
+├── Dockerfile
+├── Dockerfile.bot
 ├── docker-compose.yaml
-└── requirements.txt
+├── .gitignore
+├── .python-version
+└── README.md
 ```
 
 ## 🔧 Переменные окружения
