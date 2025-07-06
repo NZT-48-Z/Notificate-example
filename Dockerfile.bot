@@ -1,0 +1,8 @@
+FROM python:3.12-slim
+WORKDIR /app
+RUN pip install --no-cache-dir fastapi aio-pika aiogram python-dotenv aiofiles uvicorn
+# Копируем весь проект
+COPY . .
+# Добавляем src в PYTHONPATH
+ENV PYTHONPATH=/app/src
+CMD ["python", "src/bot_worker/main.py"] 
